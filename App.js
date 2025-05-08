@@ -1,27 +1,9 @@
-const express = require("express");
-const app = express ();
-const cors = require ("cors")
-app.get ("", (req, res) => {
-  return res.json ({
-    message: 'Hello World!',
-    });
-});
+const express = require ("express");
+const rotas = require("./routes");
 
-app.get ("/cadastro", (req, res) => {
-    return res.json ({
-      message: 'Funcao de cadastro',
-      });
-  });
+const app = express();
 
-  app.get ("/login", (req, res) => {
-    return res.json ({
-      message: 'Funcao de login',
-      });
-  });
-  app.get ("/home", (req, res) => {
-    return res.json ({
-      message: 'Funcao de home',
-      });
-  });
+app.use(express.json());
+app.use(rotas);
 
-app.listen(9000, () => console.log("Servidor Rodando!"));
+module.exports = app;
