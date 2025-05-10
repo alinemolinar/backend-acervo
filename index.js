@@ -1,6 +1,6 @@
 const app = require("./App");
-const loaders = require(" ./loaders/index");
+const loaders = require("./Loaders/index");
 
-Loaders.start();
+loaders.start();
 
 app.listen(8000, () => console.log("Servidor Rodando"));
