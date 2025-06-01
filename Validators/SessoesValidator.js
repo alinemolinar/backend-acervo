@@ -19,4 +19,5 @@ const destroy = validateRequest({
 
 module.exports = {
     create,
+    destroy,
 };

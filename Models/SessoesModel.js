@@ -14,4 +14,5 @@ const SessoesSchema = new Schema ({
 })
 
 const SessoesModel = mongoose.model('sessoes', SessoesSchema);
+
 module.exports = SessoesModel;

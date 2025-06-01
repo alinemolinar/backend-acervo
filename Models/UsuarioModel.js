@@ -31,6 +31,7 @@ UsuarioSchema.pre("save", async function (next) {
     console.log ({ salt, hash });
 
   }
+  next();
 }) 
 
 const UsuarioModel = mongoose.model("usuarios", UsuarioSchema);
