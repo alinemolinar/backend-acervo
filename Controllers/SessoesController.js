@@ -5,6 +5,12 @@ class SessoesController {
 
     async create (req, res) {
        try {
+        const usuarioEcontrado = await UsuarioModel.findById(
+            req.body.id_usuario
+        );
+        if(!usuarioEcontrado) return res.status(404).json({ message: "Usuário não encontrado" });
+
+
          const sessoes = await SessoesModel.create(req.body);
 
         return res.status(200).json(sessoes);
@@ -34,11 +40,18 @@ class SessoesController {
 
     async delete (req, res) {
         try {
-        const { id } = req.params;
+        const { id_usuario } = req.params;
 
-        await SessoesModel.findByIdAndDelete(id);
+        const sessaoEncontrada = await SessoesModel.find({
+            id_usuario, 
+        });
 
-        return res.status(200).json({ "mensagem": "Sessão deletada com sucesso!"});
+        if (!sessaoEncontrada) 
+            return res.status(404).json({ "mensagem": "Sessão não encontrada"});
+
+        await sessaoEncontrada.deleteOne();
+
+            return res.status(200).json({ "mensagem": "Sessão deletada com sucesso!"});
         } catch (error) {
         res
         .status(500)

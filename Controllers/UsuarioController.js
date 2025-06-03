@@ -13,7 +13,7 @@ class UsuarioController {
         } catch (error) {
             res
             .status(500)
-            .json( {message: "Deu errado!", error: error.message} )
+            .json( {message: "Deu errado!", error: error.message} );
         }
 
         
