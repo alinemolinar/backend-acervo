@@ -17,11 +17,13 @@ rotas.delete ('/usuarios/:id', verificarJwt, verificarUsuario, UsuarioValidator.
 rotas.put ('/usuarios/:id', verificarJwt, verificarUsuario, UsuarioValidator.update, UsuarioController.update);
 
 // sessoes
-rotas.post('/sessoes', verificarJwt, verificarUsuario, SessoesValidator.create, SessoesController.create);
-rotas.get ('/sessoes', verificarJwt, SessoesController.read);
+rotas.post('/sessoes', SessoesValidator.create, SessoesController.create);
+rotas.get ('/sessoes', SessoesController.read);
 rotas.delete ('/sessoes/:id_usuario', verificarUsuario, verificarJwt, SessoesValidator.destroy, SessoesController.delete);
 
 //auth
 rotas.post("/login", AuthValidator.login, AuthController.login);
 
 module.exports = rotas; 
+//verificarJwt
+//verificarUsuario

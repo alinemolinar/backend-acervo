@@ -5,4 +5,5 @@ class loaders{
        startDB();
     }
 }
+module.exports = startDB;
 module.exports = new loaders();
